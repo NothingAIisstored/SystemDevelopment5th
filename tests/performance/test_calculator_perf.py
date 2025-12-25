@@ -1,17 +1,16 @@
-# tests/performance/test_calculator_perf.py
-from calculator.calculator import add, sub, mul
+from calculator.calculator import Calculator
 
 
 def test_add_performance(benchmark):
-    """Performance of add()"""
-    benchmark(add, 100, 200)
+    calc = Calculator()
+    benchmark(calc.add, 100, 200)
 
 
-def test_sub_performance(benchmark):
-    """Performance of sub()"""
-    benchmark(sub, 300, 100)
+def test_subtract_performance(benchmark):
+    calc = Calculator()
+    benchmark(calc.subtract, 300, 100)
 
 
-def test_mul_performance(benchmark):
-    """Performance of mul()"""
-    benchmark(mul, 20, 30)
+def test_multiply_performance(benchmark):
+    calc = Calculator()
+    benchmark(calc.multiply, 20, 30)
