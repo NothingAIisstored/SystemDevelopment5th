@@ -27,4 +27,4 @@ jobs:
 
       - name: Run performance benchmark
         run: |
-          pytest tests/performance --benchmark-only --benchmark-autosave
+          pytest tests/performance --benchmark-only --benchmark-verbose
