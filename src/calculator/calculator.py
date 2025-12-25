@@ -7,15 +7,26 @@ class InvalidInputException(Exception):
     """Exception raised when input values are outside the valid range."""
     pass
 
+MAX_VALUE = 1000000
+MIN_VALUE = -1000000 
 
 class Calculator:
     """Calculator class providing basic arithmetic operations."""
 
 
+    def _validate_input(self, *values):
+        for value in values:
+            if value >= MAX_VALUE or value <= MIN_VALUE:
+                raise InvalidInputException()
+    
+    def calculate(self, x):
+        self._validate_input(x)
+        return x * 2
+
 
     def add(self, a, b):
         """Add two numbers.
-
+        
         Args:
             a: First number
             b: Second number
@@ -26,6 +37,7 @@ class Calculator:
         Raises:
             InvalidInputException: If any input is outside valid range
         """
+        self._validate_input(a,b)
         return a + b
 
     def subtract(self, a, b):
@@ -41,6 +53,7 @@ class Calculator:
         Raises:
             InvalidInputException: If any input is outside valid range
         """
+        self._validate_input(a,b)
         return a - b
 
     def multiply(self, a, b):
@@ -56,6 +69,7 @@ class Calculator:
         Raises:
             InvalidInputException: If any input is outside valid range
         """
+        self._validate_input(a,b)
         return a * b
 
     def divide(self, a, b):
@@ -72,6 +86,7 @@ class Calculator:
             InvalidInputException: If any input is outside valid range
             ValueError: If b is zero
         """
+        self._validate_input(a,b)
         if b == 0:
             raise ValueError("Cannot divide by zero")
         return a / b
