@@ -5,6 +5,7 @@ Test suite for the Calculator class.
 import pytest
 from calculator.calculator import Calculator, InvalidInputException
 
+
 def calc():
     return Calculator()
 
@@ -36,14 +37,13 @@ class TestAddition:
     def test_add_floats(self):
         calc = Calculator()
         assert calc.add(2.5, 3.7) == pytest.approx(6.2)
-    
-    def test_add_out_of_range(self):
-     calc = Calculator()
-     with pytest.raises(InvalidInputException):
-        calc.add(1000000, 1)
-     with pytest.raises(InvalidInputException):
-        calc.add(1, 1000000)
 
+    def test_add_out_of_range(self):
+        calc = Calculator()
+        with pytest.raises(InvalidInputException):
+            calc.add(1000000, 1)
+        with pytest.raises(InvalidInputException):
+            calc.add(1, 1000000)
 
 
 class TestSubtraction:
@@ -73,14 +73,13 @@ class TestSubtraction:
     def test_subtract_floats(self):
         calc = Calculator()
         assert calc.subtract(2.5, 3.7) == pytest.approx(-1.2)
-    
+
     def test_subtract_out_of_range(self):
         calc = Calculator()
         with pytest.raises(InvalidInputException):
-          calc.subtract(1000000, 1)
+            calc.subtract(1000000, 1)
         with pytest.raises(InvalidInputException):
-          calc.subtract(1, 1000000)
-
+            calc.subtract(1, 1000000)
 
 
 class TestMultiplication:
@@ -115,7 +114,6 @@ class TestMultiplication:
             calc.multiply(1, 1000000)
 
 
-
 class TestDivision:
     """Tests for the divide method."""
 
@@ -143,29 +141,28 @@ class TestDivision:
     def test_divide_out_of_range(self):
         calc = Calculator()
         with pytest.raises(InvalidInputException):
-                calc.divide(1000000, 1)
+            calc.divide(1000000, 1)
         with pytest.raises(InvalidInputException):
-                calc.divide(1, 1000000)
+            calc.divide(1, 1000000)
 
     def test_divide_any_zero_denominator_raises(self):
-         calc = Calculator()
-         with pytest.raises(Exception):  # ValueError に限定しない
+        calc = Calculator()
+        with pytest.raises(Exception):  # ValueError に限定しない
             calc.divide(10, 0)
-    
+
     def test_divide_out_of_range_inputs(self):
         calc = Calculator()
         with pytest.raises(InvalidInputException):
-         calc.divide(1000000, 1)
+            calc.divide(1000000, 1)
 
         with pytest.raises(InvalidInputException):
             calc.divide(1, 1000000)
 
         with pytest.raises(InvalidInputException):
-             calc.divide(-1000000, 2)
+            calc.divide(-1000000, 2)
 
         with pytest.raises(InvalidInputException):
             calc.divide(2, -1000000)
-
 
 
 class TestCalculateAndValidation:
@@ -183,4 +180,3 @@ class TestCalculateAndValidation:
 
         with pytest.raises(InvalidInputException):
             calc.calculate(-1000000)
-    
